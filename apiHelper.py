@@ -1,14 +1,17 @@
 import requests
 import datetime
 
-from dotenv import dotenv_values
+import os
+from dotenv import load_dotenv
 
+load_dotenv()
 class APIHelper:
-  __config = dotenv_values(".env")
+  __tk = os.getenv('tk')
 
-  __headers = {
-    'Authorization': f'Bearer {__config['tk']}'
-  }
+  __headers = {}
+  
+  if __tk is not None:
+    __headers = {'Authorization': f'Bearer {__tk}'}
 
   def __parse_issues_total_count_data(self, repo: str, type: str, status: str):
     end = datetime.datetime.today()
