@@ -1,0 +1,6 @@
+.env
+.venv/
+report.xlsx
+report1.numbers
+__pycache__/
+.DS_Store
